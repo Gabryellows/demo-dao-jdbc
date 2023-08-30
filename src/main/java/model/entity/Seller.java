@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Seller {
 
@@ -61,5 +62,20 @@ public class Seller {
         this.baseSalary = baseSalary;
     }
 
+    public String toString() {
+    	return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary=" + baseSalary + "]";
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Seller seller = (Seller) o;
+        return Objects.equals(id, seller.id) && Objects.equals(email, seller.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email);
+    }
 }
